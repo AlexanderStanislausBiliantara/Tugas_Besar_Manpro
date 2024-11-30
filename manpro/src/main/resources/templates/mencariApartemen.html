@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiRes+</title>
+    <link rel="stylesheet" th:href="@{/css/style-mencari-apartemen.css}">
+</head>
+<body>
+    <header>
+        <img class="cires_icon" src="assets/LogoCiresBaru.png" />
+        <div class="header_buttons">
+            <a class="login" href="login_page.html"><p>Masuk</p></a>
+            <a class="login" href="daftar.html"><p>Daftar</p></a>
+        </div>
+    </header>
+    <div class="container">
+        <h2>Pilih Unit Impian Anda</h2>
+        <div class="searchbar_container">
+            <label for="tipe" class="tipe">Tipe Unit</label>
+            <select name="Tipe apartemen" id="tipe">
+                <option value="studio">Studio</option>
+                <option value="2br">2 Bedroom</option>
+            </select>
+            <label for="check_in_date" class="checkin">Check-In</label>
+            <input type="date" id="check_in_date">
+            <label for="check_in_date" class="checkout">Check-Out</label>
+            <input type="date" id="check_out_date">
+
+            <label for="highestprice" class="hargarendah">Harga Terendah</label>
+            <input type="text" id="lowestprice">
+            <label for="highestprice" class="hargatinggi">Harga Tertinggi</label>
+            <input type="text" id="highestprice">
+
+            <label for="rating" class="rating">Rating Unit</label>
+            <select name="rating" id="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button>Cari</button>
+        </div>
+
+
+        <div class="result_container">
+            <img src="assets/413702-77521039__1701487479-8592-apartemen-sky-house-bsd-foto-humas-risland-indonesia-20-794.jpg" alt="">
+        </div>
+        
+    </div>
+</body>
+</html>

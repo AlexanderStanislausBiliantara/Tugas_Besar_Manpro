@@ -1,0 +1,92 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiRes+</title>
+    <script th:src="@{/js/MenambahApartemen.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/MenambahApartemen.css}">
+</head>
+<body>
+    <header>
+        <img class="cires_icon" th:src="@{/assets/LogoCiresBaru.png}"/>
+        <div class="header_buttons">
+            <p class="welcome-message">Selamat Datang, Agen John Doe!</p>
+        </div>
+    </header>
+    <div class="container">
+        <form th:action="@{/agen/add}" method="POST">
+            <h2>Silahkan Masukan Detail Unit</h2>
+        <div class="searchbar_container">
+            <label for="tower" class="tower">Tower</label>
+            <select name="namaTower" id="tower">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <label for="noLantai" class="checkin">Lantai</label>
+            <input name="noLantai" type="number" min="1" max="20" id="noLantai" required>
+            <label for="noUnit" class="checkout">Nomor Unit</label>
+            <input name="noUnit" type="number" min="1" max="200" id="noUnit" required>
+
+            <label for="tipe" class="tipe">Tipe Unit</label>
+            <select name="tipe" id="tipe">
+                <option value="studio">Studio</option>
+                <option value="2BR">2BR</option>
+            </select>
+            <label for="tarif" class="tarif">Harga</label>
+            <input name="tarif" type="text" id="tarif" required>
+            <button type="submit" id="button-tambahkan" onclick="addUnit()">Tambahkan</button>
+
+            </div>
+        </form>
+        
+    </div>
+
+    <div id="result_container">
+        <div th:each="unit : ${units}" id="new-unit" >
+            <div class="info-new-unit">
+                <div class="info-kode-unit">
+                    <p id="label-kode">Kode Unit: </p>
+                    <p th:text="${unit.kodeUnit}" id="kode-unit"></p>
+                </div>
+    
+                <div class="info-unit-2">
+                    <div class="info-unit">
+                        <span>Tower: </span>
+                        <span th:text="${unit.namaTower}" id="tower-unit"></span>  
+                    </div>
+                        
+                    <div class="info-unit">
+                        <span>Lantai: </span>
+                        <span th:text="${unit.noLantai}" id="lantai"></span>
+                    </div>
+        
+                    <div class="info-unit">
+                        <span>No: </span>
+                        <span th:text="${unit.noUnit}" id="no-unit"></span>
+                    </div>
+        
+                    <div class="info-unit">
+                        <span>Harga: Rp</span>
+                        <span th:text="${unit.tarif}" id="harga-unit"></span>
+                    </div>
+        
+                    <div class="info-unit">
+                        <span>Tipe Unit: </span>
+                        <span th:text="${unit.tipe}" id="tipe-unit"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <!-- <div class="popup" id="popup">
+        <div class="popup-content">
+            <img src="../static/assets/checkmark.png" class="centang">
+            <p>Apartemen Berhasil Ditambahkan</p>
+            <button class="close" onclick="closePopUp()">OK</button>
+        </div>
+    </div> -->
+</body>
+</html>

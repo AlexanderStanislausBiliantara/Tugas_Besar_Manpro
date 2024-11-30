@@ -1,0 +1,61 @@
+.info{
+    height: 100%;
+}
+
+.cires_icon {
+    width: 200px;
+    height: 200px;
+}
+
+header {
+    height: 8vh;
+    background-color: #6d8f5d;
+    display: flex;
+    align-items: center;
+}
+
+.header_buttons {
+    display: flex;
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    font-family: system-ui;
+    overflow-x: hidden;
+}
+
+.search-button{
+    background-color: #a4bb9a;
+}
+
+.search-button:hover{
+    background-color: #657260;
+    cursor: pointer;
+}
+
+.price{
+    color: rgb(211, 137, 0);
+}
+
+th, td{
+    border: 1px solid black;
+}
+
+thead {
+    background-color: #a4bb9a;
+    color: white;
+}
+
+td {
+    text-align: center;
+}
+
+table {
+    width: 50%;
+    height: 20vh;
+    table-layout: fixed;
+}
+

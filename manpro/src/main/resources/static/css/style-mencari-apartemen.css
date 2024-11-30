@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333; 
+}
+
+header {
+    position: sticky;
+    top: 0; 
+    z-index: 1000; 
+    height: 8vh;
+    background-color: #4b635e;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cires_icon {
+    width: 150px;
+    height: auto;
+}
+
+.header_buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.login {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    background-color: #6d8f5d;
+    height: 20px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.login:hover {
+    background-color: #4b5845;
+    transform: scale(1.05);
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #4b635e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.searchbar_container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    padding: 20px;
+    background-color: #f0f4f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, select {
+    width: 90%;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4b635e;
+    box-shadow: 0 0 5px rgba(75, 99, 94, 0.5);
+}
+
+button {
+    grid-column: 3 / span 2; 
+    height: 40px;
+    background-color: #4b635e;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #6d8f5d;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.result_container img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    opacity: 50%;
+}
+
+label{
+    margin-top: 10px;
+}
+
+button{
+    margin-top: 10px;
+}
