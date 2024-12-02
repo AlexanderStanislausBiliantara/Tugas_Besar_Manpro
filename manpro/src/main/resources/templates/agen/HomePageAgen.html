@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiRes+</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/HomePageAgen.css}">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="header_container">
+        <header>
+            <img class="cires_icon" src="../assets/LogoCiresBaru.png" />
+            <div class="header_buttons">
+                <p class="text-white text-2xl">Selamat Datang, Agen John Doe!</p>
+            </div>
+        </header>
+    </div>
+
+    <main class="w-full h-full flex justify-center items-center">
+        <div class="content gap-3">
+            <div id="kelolaUnit" class="feature flex flex-col rounded-lg p-3 justify-center items-center">
+                <div>
+                    <form th:action="@{/agen/cariKelolaUnit}" method="GET">
+                        <button><p class="text-content">Kelola Unit</p></button>
+                    </form>
+                </div>
+                <div class="hidden-content-kelolaUnit text-center">
+                    <p>Kelola unit anda seperti mengedit harga, mengganti jenis dan status ketersediaan unit.</p>
+                </div>
+            </div>
+
+            <div id="pesanUnit" class="feature flex rounded-lg p-3 justify-center items-center">
+                <form>
+                    <p class="text-content">Unit yang Telah Dipesan</p>
+                </form>
+                <div class="hidden-content-pesanUnit text-center">
+                    <p>Lihat unit-unit yang telah dipesan oleh pelanggan.</p>
+                </div>
+            </div>
+
+            <div id="cekincekout" class="feature flex rounded-lg p-3 justify-center items-center">
+                <form>
+                    <p class="text-content">Daftar Check-In & Check-Out</p>
+                </form>
+                <div class="hidden-content-cekincekout text-center">
+                    <p>Lihat daftar pelanggan yang telah melakukan Check-In maupun Check-Out.</p>
+                </div>
+            </div>
+
+            <div id="utilitas" class="feature flex rounded-lg p-3 justify-center items-center">
+                <form>
+                    <p class="text-content">Laporan Utilitas</p>
+                </form>
+                <div class="hidden-content-utilitas text-center">
+                    <p>Lihat laporan utilitas penyewaan apartemen.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
