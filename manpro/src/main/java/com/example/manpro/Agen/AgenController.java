@@ -18,13 +18,18 @@ public class AgenController {
 
     @GetMapping("")
     public String agenHomepage() {
-        return "agen/cariUntukKelolaUnit";
+        return "agen/HomePageAgen";
     }
 
     @GetMapping("/addUnit")
     public String showForm(Model model) {
         model.addAttribute("units", repo.showAllAddedUnits(addedUnitCounter));
         return "agen/MenambahApartemen";
+    }
+
+    @GetMapping("/cariKelolaUnit")
+    public String cariKelolaUnit(Model model){
+        return "agen/cariUntukKelolaUnit";
     }
 
     @PostMapping("/add")
