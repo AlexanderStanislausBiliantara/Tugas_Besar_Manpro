@@ -16,8 +16,8 @@ public class AgenController {
     private AgenRepository repo;
     private int addedUnitCounter = 0;
 
-    @GetMapping("")
-    public String agenHomepage() {
+    @GetMapping("/cariKelolaUnit")
+    public String agenSearchUnit() {
         return "agen/cariUntukKelolaUnit";
     }
 
@@ -25,6 +25,12 @@ public class AgenController {
     public String showForm(Model model) {
         model.addAttribute("units", repo.showAllAddedUnits(addedUnitCounter));
         return "agen/MenambahApartemen";
+    }
+
+    @GetMapping("/search")
+    public String showSearchedUnits(Model model, @RequestParam String namaTower, @RequestParam String noLantai, @RequestParam String tipe) {
+        model.addAttribute("managing_units", repo.findUnitByQuery(namaTower, noLantai, tipe));
+        return "agen/KelolaUnit";
     }
 
     @PostMapping("/add")
