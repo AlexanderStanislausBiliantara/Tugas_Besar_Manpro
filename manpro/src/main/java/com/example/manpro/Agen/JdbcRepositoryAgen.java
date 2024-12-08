@@ -3,6 +3,7 @@ package com.example.manpro.Agen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,4 +41,22 @@ public class JdbcRepositoryAgen implements AgenRepository {
         List<Unit> addedUnits = jdbcTemplate.query(sql, this::mapRowToUnit, limit);
         return addedUnits;
     }
+
+    @Override
+    public Optional<Agen> findByNikAgen(String nikAgen) {
+        String sql = "SELECT * FROM Agen where = ?";
+        List<Agen> results = jdbcTemplate.query(sql, this::mapRowToAgen, nikAgen);
+        return results.size() == 0 ? Optional.empty() : Optional.of(results.get(0));
+    }
+
+    private Agen mapRowToAgen(ResultSet resultSet, int rowNum) throws SQLException {
+        return new Agen(
+            resultSet.getString("nikagen"), 
+            resultSet.getString("alamata"),
+            resultSet.getString("nohp"),
+            resultSet.getString("namaagen")
+            );
+    }
+
+    
 }
