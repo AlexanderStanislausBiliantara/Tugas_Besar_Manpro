@@ -69,11 +69,12 @@
                     <span class="status text-xl font-semibold">Status : </span>
                     <div th:text="${managing_unit.status}" class="status text-xl font-semibold "></div>
                 </div>
-
-                <div class="border flex flex-col justify-center items-center ml-auto w-40 hover:bg-gray-200 gap-4">
-                    <p class="text-2xl font-semibold">Kelola Unit</p>
-                    <i class="fas fa-arrow-right text-5xl text-green-500"></i> <!-- Right arrow -->
-                </div>
+                <a th:href="@{formKelolaUnit(kodeUnit=${managing_unit.kodeUnit})}" class="link_to_form">
+                    <div class="border flex flex-col justify-center items-center ml-auto w-40 hover:bg-gray-200 gap-4">
+                        <p class="text-2xl font-semibold">Kelola Unit</p>
+                        <i class="fas fa-arrow-right text-5xl text-green-500"></i>
+                    </div>
+                </a>
             </div>
         </div>
     </main>

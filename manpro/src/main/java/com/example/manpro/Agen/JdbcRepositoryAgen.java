@@ -3,6 +3,7 @@ package com.example.manpro.Agen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -46,5 +47,18 @@ public class JdbcRepositoryAgen implements AgenRepository {
         String sql = "SELECT * FROM Unit WHERE namatower = ? AND nolantai = ? AND tipe = ?";
         List<Unit> foundUnits = jdbcTemplate.query(sql, this::mapRowToUnit, namaTower, noLantai, tipe);
         return foundUnits;
+    }
+    
+    @Override
+    public Optional<Unit> findUnitByKode(String kodeUnit) {
+        String sql = "SELECT * FROM Unit WHERE kodeUnit = ?";
+        List<Unit> foundUnit = jdbcTemplate.query(sql, this::mapRowToUnit, kodeUnit);
+        return foundUnit.isEmpty() ? Optional.empty() : Optional.of(foundUnit.get(0));
+    }
+
+    @Override
+    public void updateUnit(String kodeUnit, String tipe, double tarif, boolean status) {
+        String sql = "UPDATE Unit SET tipe = ?, tarif = ?, status = ? WHERE kodeUnit = ?";
+        jdbcTemplate.update(sql, tipe, tarif, status, kodeUnit);
     }
 }
