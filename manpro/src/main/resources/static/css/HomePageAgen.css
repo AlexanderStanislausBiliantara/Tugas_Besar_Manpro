@@ -1,0 +1,223 @@
+.cires_icon {
+    width: 200px;
+    height: 200px;
+}
+
+header {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+}
+
+.icon {
+    width: 130px;
+    height: 130px;
+}
+
+.header_container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header_buttons {
+    display: flex;
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: system-ui;
+    background: url("../assets/newCiresImg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: brightness(20%);
+    -webkit-backdrop-filter: brightness(20%);
+    background: rgba(0, 0, 0, 0.2); /* Tambahkan sedikit opacity jika ingin efek tambahan */
+    z-index: 0; /* Pastikan berada di belakang konten utama */
+}
+
+.header_container, main {
+    position: relative;
+    z-index: 1; /* Pastikan berada di atas overlay */
+}
+
+main{
+    width: 100%;
+    height: 100%;
+}
+
+.feature{
+    border: solid 1px white;
+    color: white;
+}
+
+.content{
+    width: 70%;
+    height: 70%;
+    display: grid;
+    grid-template-areas: 
+    "kelola" "pesan"
+    "cek" "utilitas";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+main p{
+    font-size: 1.5rem;
+}
+
+.text-content{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#kelolaUnit{
+    grid-area: 'kelola';
+    overflow:hidden;
+    position: relative;
+}
+
+
+.hidden-content-kelolaUnit{
+    position: absolute;
+    bottom: -50%; /* Jarak tooltip dari elemen */
+    background-color: white; /* Warna latar belakang tooltip */
+    color: black; /* Warna teks tooltip */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    width: 100%; /* Lebar tooltip */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#kelolaUnit:hover form p{
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+}
+
+#kelolaUnit form p{
+    transition: transform 0.3s ease;
+}
+
+#kelolaUnit:hover .hidden-content-kelolaUnit{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-120%);
+}
+
+#pesanUnit{
+    grid-area: 'pesan';
+    overflow:hidden;
+    position: relative;
+}
+
+.hidden-content-pesanUnit{
+    position: absolute;
+    bottom: -50%; /* Jarak tooltip dari elemen */
+    background-color: white; /* Warna latar belakang tooltip */
+    color: black; /* Warna teks tooltip */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    width: 100%; /* Lebar tooltip */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#pesanUnit:hover form p{
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+}
+
+#pesanUnit form p{
+    transition: transform 0.3s ease;
+}
+
+#pesanUnit:hover .hidden-content-pesanUnit{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-120%);
+}
+
+#cekincekout{
+    grid-area: 'cek';
+    overflow:hidden;
+    position: relative;
+}
+
+.hidden-content-cekincekout{
+    position: absolute;
+    bottom: -50%; /* Jarak tooltip dari elemen */
+    background-color: white; /* Warna latar belakang tooltip */
+    color: black; /* Warna teks tooltip */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    width: 100%; /* Lebar tooltip */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#cekincekout:hover form p{
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+}
+
+#cekincekout form p{
+    transition: transform 0.3s ease;
+}
+
+#cekincekout:hover .hidden-content-cekincekout{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-120%);
+}
+
+#utilitas{
+    grid-area: 'utilitas';
+    overflow:hidden;
+    position: relative;
+}
+
+.hidden-content-utilitas{
+    position: absolute;
+    bottom: -50%; /* Jarak tooltip dari elemen */
+    background-color: white; /* Warna latar belakang tooltip */
+    color: black; /* Warna teks tooltip */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    width: 100%; /* Lebar tooltip */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#utilitas:hover form p{
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+}
+
+#utilitas form p{
+    transition: transform 0.3s ease;
+}
+
+#utilitas:hover .hidden-content-utilitas{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-200%);
+}
