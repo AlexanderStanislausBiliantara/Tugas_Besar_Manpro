@@ -20,6 +20,21 @@ public class AgenController {
     private AgenRepository repo;
     private int addedUnitCounter = 0;
 
+    @GetMapping("/homePage")
+    public String agen(){
+        return "agen/HomePageAgen";
+    }
+
+    @GetMapping("/unitDipesan")
+    public String unitDipesan(){
+        return "agen/DaftarUnitDipesan";
+    }
+
+    @GetMapping("/daftarCheckinCheckout")
+    public String daftarCheckinCheckout(){
+        return "agen/DaftarCheckInOut";
+    }
+
     @GetMapping("/cariKelolaUnit")
     public String agenSearchUnit() {
         return "agen/cariUntukKelolaUnit";
