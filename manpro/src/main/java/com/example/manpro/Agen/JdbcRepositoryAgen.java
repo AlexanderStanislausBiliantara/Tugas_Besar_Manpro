@@ -24,14 +24,14 @@ public class JdbcRepositoryAgen implements AgenRepository {
 
     private Unit mapRowToUnit(ResultSet resultSet, int rowNum) throws SQLException {
         return new Unit(
-            resultSet.getString("kodeUnit"),
+            resultSet.getString("kodeunit"),
             resultSet.getString("tipe"),
-            resultSet.getString("noUnit"),
+            resultSet.getString("nounit"),
             resultSet.getBoolean("status"),
             resultSet.getDouble("tarif"),
-            resultSet.getString("nikAgen"),
-            resultSet.getString("noLantai"),
-            resultSet.getString("namaTower")
+            resultSet.getString("nikagen"),
+            resultSet.getString("nolantai"),
+            resultSet.getString("namatower")
         );
     }
 
@@ -59,4 +59,24 @@ public class JdbcRepositoryAgen implements AgenRepository {
     }
 
     
+
+    @Override
+    public List<Unit> findUnitByQuery(String namaTower, String noLantai, String tipe) {
+        String sql = "SELECT * FROM Unit WHERE namatower = ? AND nolantai = ? AND tipe = ?";
+        List<Unit> foundUnits = jdbcTemplate.query(sql, this::mapRowToUnit, namaTower, noLantai, tipe);
+        return foundUnits;
+    }
+    
+    @Override
+    public Optional<Unit> findUnitByKode(String kodeUnit) {
+        String sql = "SELECT * FROM Unit WHERE kodeUnit = ?";
+        List<Unit> foundUnit = jdbcTemplate.query(sql, this::mapRowToUnit, kodeUnit);
+        return foundUnit.isEmpty() ? Optional.empty() : Optional.of(foundUnit.get(0));
+    }
+
+    @Override
+    public void updateUnit(String kodeUnit, String tipe, double tarif, boolean status) {
+        String sql = "UPDATE Unit SET tipe = ?, tarif = ?, status = ? WHERE kodeUnit = ?";
+        jdbcTemplate.update(sql, tipe, tarif, status, kodeUnit);
+    }
 }

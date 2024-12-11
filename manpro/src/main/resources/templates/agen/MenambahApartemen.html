@@ -16,28 +16,27 @@
     <div class="container">
         <form th:action="@{/agen/add}" method="POST">
             <h2>Silahkan Masukan Detail Unit</h2>
-        <div class="searchbar_container">
-            <label for="tower" class="tower">Tower</label>
-            <select name="namaTower" id="tower">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-            </select>
-            <label for="noLantai" class="checkin">Lantai</label>
-            <input name="noLantai" type="number" min="1" max="20" id="noLantai" required>
-            <label for="noUnit" class="checkout">Nomor Unit</label>
-            <input name="noUnit" type="number" min="1" max="200" id="noUnit" required>
+            <div class="searchbar_container">
+                <label for="tower" class="tower">Tower</label>
+                <select name="namaTower" id="tower">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+                <label for="noLantai" class="checkin">Lantai</label>
+                <input name="noLantai" type="number" min="1" max="20" id="noLantai" required>
+                <label for="noUnit" class="checkout">Nomor Unit</label>
+                <input name="noUnit" type="number" min="1" max="200" id="noUnit" required>
 
-            <label for="tipe" class="tipe">Tipe Unit</label>
-            <select name="tipe" id="tipe">
-                <option value="studio">Studio</option>
-                <option value="2BR">2BR</option>
-            </select>
-            <label for="tarif" class="tarif">Harga</label>
-            <input name="tarif" type="text" id="tarif" required>
-            <button type="submit" id="button-tambahkan" onclick="addUnit()">Tambahkan</button>
-
+                <label for="tipe" class="tipe">Tipe Unit</label>
+                <select name="tipe" id="tipe">
+                    <option value="studio">Studio</option>
+                    <option value="2BR">2BR</option>
+                </select>
+                <label for="tarif" class="tarif">Harga</label>
+                <input name="tarif" type="text" id="tarif" required>
+                <button type="submit" id="button-tambahkan" onclick="addUnit()">Tambahkan</button>
             </div>
         </form>
         
