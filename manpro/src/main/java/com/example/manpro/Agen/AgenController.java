@@ -1,5 +1,8 @@
 package com.example.manpro.Agen;
 
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +23,7 @@ public class AgenController {
     private AgenRepository repo;
     private int addedUnitCounter = 0;
 
-    @GetMapping("/homePage")
+    @GetMapping("/")
     public String agen(){
         return "agen/HomePageAgen";
     }
@@ -48,6 +51,9 @@ public class AgenController {
 
     @GetMapping("/search")
     public String showSearchedUnits(Model model, @RequestParam String namaTower, @RequestParam String noLantai, @RequestParam String tipe) {
+        if(Integer.parseInt(noLantai)<10){
+            noLantai = "0".concat(noLantai);
+        }
         model.addAttribute("managing_units", repo.findUnitByQuery(namaTower, noLantai, tipe));
         return "agen/KelolaUnit";
     }
