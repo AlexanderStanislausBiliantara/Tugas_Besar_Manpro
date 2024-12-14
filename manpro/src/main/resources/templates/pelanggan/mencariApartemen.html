@@ -3,11 +3,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CiRes+</title>
-    <link rel="stylesheet" th:href="@{/css/style-mencari-apartemen.css}">
+    <link rel="stylesheet" href="../../static/css/style-mencari-apartemen.css">
 </head>
 <body>
     <header>
-        <img class="cires_icon" src="assets/LogoCiresBaru.png" />
+        <img class="cires_icon" src="../../static/assets/LogoCiresBaru.png" />
         <div class="header_buttons">
             <a class="login" href="login_page.html"><p>Masuk</p></a>
             <a class="login" href="daftar.html"><p>Daftar</p></a>
@@ -44,7 +44,41 @@
 
 
         <div class="result_container">
-            <img src="assets/413702-77521039__1701487479-8592-apartemen-sky-house-bsd-foto-humas-risland-indonesia-20-794.jpg" alt="">
+            <div th:each="unit : ${units}" id="new-unit" >
+                <div class="info-new-unit">
+                    <div class="info-kode-unit">
+                        <p id="label-kode">Kode Unit: </p>
+                        <p th:text="${unit.kodeUnit}" id="kode-unit"></p>
+                    </div>
+        
+                    <div class="info-unit-2">
+                        <div class="info-unit">
+                            <span>Tower: </span>
+                            <span th:text="${unit.namaTower}" id="tower-unit"></span>  
+                        </div>
+                            
+                        <div class="info-unit">
+                            <span>Lantai: </span>
+                            <span th:text="${unit.noLantai}" id="lantai"></span>
+                        </div>
+            
+                        <div class="info-unit">
+                            <span>No: </span>
+                            <span th:text="${unit.noUnit}" id="no-unit"></span>
+                        </div>
+            
+                        <div class="info-unit">
+                            <span>Harga: Rp</span>
+                            <span th:text="${unit.tarif}" id="harga-unit"></span>
+                        </div>
+            
+                        <div class="info-unit">
+                            <span>Tipe Unit: </span>
+                            <span th:text="${unit.tipe}" id="tipe-unit"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
     </div>
