@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CiRes+</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/KelolaUnit.css">
+    <link rel="stylesheet" th:href="@{/css/KelolaUnit.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../static/js/indexAgen.js" th:src="@{/js/indexAgen.js}" defer></script>
+   
 </head>
 <body>
     <header class="relative">
         <div>
-            <img class="cires_icon" src="../static/assets/LogoCiresBaru.png" />
+            <img class="cires_icon" src="../assets/LogoCiresBaru.png" />
         </div>
         <div class="info header_buttons flex justify-center items-center mr-5">
             <div>
@@ -28,173 +30,58 @@
     <main>
         <div class="p-5 border sticky bg-white w-full shadow-lg top-0">
             <div class="input relative flex space-x-4 justify-center">
-                <div class="tower">
-                    <select class="w-80 h-14 text-2xl pl-4 border-2 rounded-l-full rounded-r-full">
-                        <option class="pl-2">A</option>
-                        <option class="pl-2">B</option>
-                        <option class="pl-2">C</option>
-                        <option class="pl-2">D</option>
-                    </select>
-                </div>
+                <form th:action="@{/agen/search}" method="GET">
+                    <div class="input flex space-x-4">
+                        <div class="tower">
+                            <select class="w-80 h-14 text-2xl pl-4 border-2 rounded-l-full rounded-r-full" name="namaTower">
+                                <option class="pl-2">A</option>
+                                <option class="pl-2">B</option>
+                                <option class="pl-2">C</option>
+                                <option class="pl-2">D</option>
+                            </select>
+                        </div>
+                
+                        <div class="lantai">
+                            <input name="noLantai" type="number" min="1" max="20" id="lantai-field" class="text-2xl w-80 h-14 pl-4 border rounded-l-full rounded-r-full" placeholder="Lantai (1-20)">
+                        </div> 
+                
+                        <div class="jenis">
+                            <select name="tipe" class="w-80 text-2xl h-14 pl-2 border-2 rounded-l-full rounded-r-full">
+                                <option class="pl-2">Studio</option>
+                                <option class="pl-2">2BR</option>
+                            </select>
+                        </div>
         
-                <div class="lantai">
-                    <input type="number" min="1" max="20" id="lantai-field" class="text-2xl w-80 h-14 pl-4 border rounded-l-full rounded-r-full" placeholder="Lantai (1-20)">
-                </div> 
-        
-                <div class="jenis">
-                    <select class="w-80 text-2xl h-14 pl-2 border-2 rounded-l-full rounded-r-full">
-                        <option class="pl-2">Studio</option>
-                        <option class="pl-2">2BR</option>
-                    </select>
-                </div>
-
-                <div class="search-button flex items-center justify-center rounded-2xl w-12">
-                    <a href="KelolaUnit.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-4.35-4.35m1.4-4.15a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </a>
-                </div>
+                        <div class="search-button flex items-center justify-center rounded-2xl w-12">
+                            <form>
+                                <button type="submit" id="search">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-4.35-4.35m1.4-4.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </form>                 
             </div>
         </div>
         <div class="div-unit w-full h-full flex flex-col items-center justify-center gap-5 p-5">
-            <div class="unit w-1/2 h-1/3 border rounded-2xl shadow-md flex gap-4 overflow-hidden">
+            <div th:each="managing_unit : ${managing_units}" class="unit w-1/2 h-1/3 border rounded-2xl shadow-md flex gap-4 overflow-hidden">
                 <div class="photo-unit">
-                    <img src="../static/assets/unit-1.jpg" class="w-96"/>
+                    <img th:src="@{/assets/unit-img.png}" class="w-96"/>
                 </div>
                 <div class="info-unit p-4 flex flex-col gap-2 justify-between">
-                    <div>
-                        <p class="font-bold text-3xl">Unit-A-1-Studio</p>
-                        <div class="flex flex-col gap-2">
-                            <p>4.5 / 5.0 (1K Reviews)</p>
-                            <div class="flex space-x-1 text-yellow-500">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i> <!-- Half-star example -->
-                            </div>
-                        </div>
-                    </div>
+                    <span th:text="${managing_unit.kodeUnit}" class="kodeUnit font-bold text-4xl "></span>
+                    <div th:text="${managing_unit.priceString}" class="price font-bold text-4xl "></div>
 
-                    <div class="price font-bold text-4xl ">
-                        <p>Rp 300.000</p>
-                    </div>
-
-                    <div class="status text-xl font-semibold ">
-                        <p>Status : Kosong</p>
-                    </div>
+                    <span class="status text-xl font-semibold">Status : <span th:text="${managing_unit.status ? 'TERSEDIA' : 'TIDAK TERSEDIA'}" class="status text-xl font-semibold "></span></span>
                 </div>
-
-                <div class="border flex flex-col justify-center items-center ml-auto w-40 hover:bg-gray-200 gap-4">
-                    <p class="text-2xl font-semibold">Kelola Unit</p>
-                    <i class="fas fa-arrow-right text-5xl text-green-500"></i> <!-- Right arrow -->
-                </div>
-            </div>
-
-            <div class="unit w-1/2 h-1/3 border rounded-2xl shadow-md flex gap-4 overflow-hidden">
-                <div class="photo-unit">
-                    <img src="assets/unit-1.jpg" class="w-96"/>
-                </div>
-
-                <div class="info-unit p-4 flex flex-col gap-2 justify-between">
-                    <div>
-                        <p class="font-bold text-3xl">Unit-A-1-Studio</p>
-                        <div class="flex flex-col gap-2">
-                            <p >4.5 / 5.0 (1K Reviews)</p>
-                            <div class="flex space-x-1 text-yellow-500">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i> <!-- Half-star example -->
-                            </div>
-                        </div>
+                <a th:href="@{formKelolaUnit(kodeUnit=${managing_unit.kodeUnit})}" class="link_to_form">
+                    <div class="h-full border flex flex-col justify-center items-center ml-auto w-40 hover:bg-gray-200 gap-4">
+                        <p class="text-2xl font-semibold">Kelola Unit</p>
+                        <i class="fas fa-arrow-right text-5xl text-green-500"></i>
                     </div>
-
-                    <div class="price font-bold text-4xl ">
-                        <p>Rp 300.000</p>
-                    </div>
-
-                    <div class="status text-xl font-semibold ">
-                        <p>Status : Kosong</p>
-                    </div>
-                </div>
-
-                <div class="border flex flex-col justify-center items-center ml-auto w-40 hover:bg-gray-200 gap-4">
-                    <p class="text-2xl font-semibold">Kelola Unit</p>
-                    <i class="fas fa-arrow-right text-5xl text-green-500"></i> <!-- Right arrow -->
-                </div>
-            </div>
-
-            <div class="unit w-1/2 h-1/3 border rounded-2xl shadow-md flex gap-4 overflow-hidden">
-                <div class="photo-unit">
-                    <img src="assets/unit-1.jpg" class="w-96"/>
-                </div>
-
-                <div class="info-unit p-4 flex flex-col gap-2 justify-between">
-                    <div>
-                        <p class="font-bold text-3xl">Unit-A-1-Studio</p>
-                        <div class="flex flex-col gap-2">
-                            <p >4.5 / 5.0 (1K Reviews)</p>
-                            <div class="flex space-x-1 text-yellow-500">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i> <!-- Half-star example -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="price font-bold text-4xl ">
-                        <p>Rp 300.000</p>
-                    </div>
-
-                    <div class="status text-xl font-semibold ">
-                        <p>Status : Kosong</p>
-                    </div>
-                </div>
-
-                <div class="border flex flex-col justify-center items-center ml-auto w-40 hover:bg-gray-200 gap-4">
-                    <p class="text-2xl font-semibold">Kelola Unit</p>
-                    <i class="fas fa-arrow-right text-5xl text-green-500"></i> <!-- Right arrow -->
-                </div>
-            </div>
-
-            <div class="unit w-1/2 h-1/3 border rounded-2xl shadow-md flex gap-4 overflow-hidden">
-                <div class="photo-unit">
-                    <img src="assets/unit-1.jpg" class="w-96"/>
-                </div>
-
-                <div class="info-unit p-4 flex flex-col gap-2 justify-between">
-                    <div>
-                        <p class="font-bold text-3xl">Unit-A-1-Studio</p>
-                        <div class="flex flex-col gap-2">
-                            <p >4.5 / 5.0 (1K Reviews)</p>
-                            <div class="flex space-x-1 text-yellow-500">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i> <!-- Half-star example -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="price font-bold text-4xl ">
-                        <p>Rp 300.000</p>
-                    </div>
-
-                    <div class="status text-xl font-semibold ">
-                        <p>Status : Kosong</p>
-                    </div>
-                </div>
-
-                <div class="border flex flex-col justify-center items-center ml-auto w-40 hover:bg-gray-200 gap-4">
-                    <p class="text-2xl font-semibold">Kelola Unit</p>
-                    <i class="fas fa-arrow-right text-5xl text-green-500"></i> <!-- Right arrow -->
-                </div>
+                </a>
             </div>
         </div>
     </main>

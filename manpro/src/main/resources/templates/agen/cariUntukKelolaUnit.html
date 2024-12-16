@@ -6,12 +6,12 @@
     <title>CiRes+</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/indexAgen.css}">
-    <script th:href="@{/js/indexAgen.js}" defer></script>
+    <script src="../static/js/indexAgen.js" th:src="@{/js/indexAgen.js}" defer></script>
 </head>
 <body>
     <header>
         <div>
-            <img class="cires_icon" th:src="@{/assets/LogoCiresBaru.png}" />
+            <img class="cires_icon" src="../assets/LogoCiresBaru.png" />
         </div>
         <div class="info header_buttons flex justify-center items-center mr-5">
             <div>
@@ -22,10 +22,10 @@
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
             </div>
-        </div>
+        </div>  
     </header>
     <div class="banner flex justify-center items-center">
-        <img class="cires_image z-auto" th:src="@{/assets/newCiresImg.jpg}" />
+        <img class="cires_image z-auto" src="../assets/newCiresImg.jpg" />
 
         <div class="z-auto absolute mb-96 font-bold text-5xl text-white">
             Kelola Unit Anda. Kapan saja. Di mana saja.
@@ -39,10 +39,10 @@
                 <p class="search-jenis text-white text-2xl font-bold ">Jenis</p>
             </div>
             
-            <form>
+            <form th:action="@{/agen/search}" method="GET">
                 <div class="input flex space-x-4">
                     <div class="tower">
-                        <select class="w-80 h-14 text-2xl pl-4 border-2 rounded-l-full rounded-r-full">
+                        <select class="w-80 h-14 text-2xl pl-4 border-2 rounded-l-full rounded-r-full" name="namaTower">
                             <option class="pl-2">A</option>
                             <option class="pl-2">B</option>
                             <option class="pl-2">C</option>
@@ -51,20 +51,20 @@
                     </div>
             
                     <div class="lantai">
-                        <input type="number" min="1" max="20" id="lantai-field" class="text-2xl w-80 h-14 pl-4 border rounded-l-full rounded-r-full" placeholder="Lantai (1-20)">
+                        <input name="noLantai" type="number" min="1" max="20" id="lantai-field" class="text-2xl w-80 h-14 pl-4 border rounded-l-full rounded-r-full" placeholder="Lantai (1-20)">
                     </div> 
             
                     <div class="jenis">
-                        <select class="w-80 text-2xl h-14 pl-2 border-2 rounded-l-full rounded-r-full">
+                        <select name="tipe" class="w-80 text-2xl h-14 pl-2 border-2 rounded-l-full rounded-r-full">
                             <option class="pl-2">Studio</option>
                             <option class="pl-2">2BR</option>
                         </select>
                     </div>
     
                     <div class="search-button flex items-center justify-center rounded-2xl w-12">
-                        <form th:action="" method="GET">
-                            <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <form>
+                            <button type="submit" id="search">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-4.35-4.35m1.4-4.15a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </button>

@@ -106,7 +106,7 @@ main p{
 }
 
 #kelolaUnit:hover form p{
-    transform: translateY(-110%);
+    transform: translateY(-5vh);
     transition: transform 0.3s ease;
 }
 
@@ -117,7 +117,9 @@ main p{
 #kelolaUnit:hover .hidden-content-kelolaUnit{
     opacity: 1;
     visibility: visible;
-    transform: translateY(-120%);
+    transform: translateY(-15vh);
+    margin-bottom: 5px;
+    margin-bottom: 14px;
 }
 
 #pesanUnit{
@@ -140,7 +142,7 @@ main p{
 }
 
 #pesanUnit:hover form p{
-    transform: translateY(-110%);
+    transform: translateY(-5vh);
     transition: transform 0.3s ease;
 }
 
@@ -151,7 +153,9 @@ main p{
 #pesanUnit:hover .hidden-content-pesanUnit{
     opacity: 1;
     visibility: visible;
-    transform: translateY(-120%);
+    transform: translateY(-15vh);
+    margin-bottom: 5px;
+    margin-bottom: 14px;
 }
 
 #cekincekout{
@@ -174,7 +178,7 @@ main p{
 }
 
 #cekincekout:hover form p{
-    transform: translateY(-110%);
+    transform: translateY(-5vh);
     transition: transform 0.3s ease;
 }
 
@@ -185,7 +189,9 @@ main p{
 #cekincekout:hover .hidden-content-cekincekout{
     opacity: 1;
     visibility: visible;
-    transform: translateY(-120%);
+    transform: translateY(-15vh);
+    margin-bottom: 5px;
+    margin-bottom: 14px;
 }
 
 #utilitas{
@@ -208,7 +214,7 @@ main p{
 }
 
 #utilitas:hover form p{
-    transform: translateY(-110%);
+    transform: translateY(-5vh);
     transition: transform 0.3s ease;
 }
 
@@ -219,5 +225,6 @@ main p{
 #utilitas:hover .hidden-content-utilitas{
     opacity: 1;
     visibility: visible;
-    transform: translateY(-200%);
+    transform: translateY(-15vh);
+    margin-bottom: 14px;
 }

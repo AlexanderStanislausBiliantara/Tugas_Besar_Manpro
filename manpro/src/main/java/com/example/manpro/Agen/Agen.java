@@ -15,6 +15,4 @@ public class Agen {
         this.noHp = noHp;
         this.namaAgen = namaAgen;
     }
-
-    
 }
