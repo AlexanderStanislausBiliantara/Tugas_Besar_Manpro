@@ -20,6 +20,11 @@ public class PelangganController {
         return "daftar";
     }
 
+    @GetMapping("/login")
+    public String index() {
+        return "KelolaUnit";
+    }
+
     // @PostMapping("daftar")
     // public String addPelanggan(@Valid Pelanggan pelanggan) {
 

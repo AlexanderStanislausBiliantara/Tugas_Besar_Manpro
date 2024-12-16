@@ -33,7 +33,7 @@ public class LoginController {
                 return "HomePageLogin";
             }
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
             return "AgenLogin";
         }
 
