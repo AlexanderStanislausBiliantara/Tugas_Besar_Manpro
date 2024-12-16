@@ -1,5 +1,6 @@
 (function () {
     const lantai = document.getElementById('lantai-field');
+    const searchButton = 
 
     lantai.addEventListener('input', function (){
         const value = lantai.value;

@@ -21,9 +21,9 @@
     <main class="w-full h-full flex justify-center items-center">
         <div class="content gap-3">
             <div id="kelolaUnit" class="feature flex flex-col rounded-lg p-3 justify-center items-center">
-                <div>
-                    <form th:action="@{/agen/cariKelolaUnit}" method="GET">
-                        <button><p class="text-content">Kelola Unit</p></button>
+                <div class="h-full w-full">
+                    <form th:action="@{/agen/cariKelolaUnit}" method="GET" class="h-full w-full">
+                        <button class="h-full w-full"><p class="text-content">Kelola Unit</p></button>
                     </form>
                 </div>
                 <div class="hidden-content-kelolaUnit text-center">
@@ -32,27 +32,33 @@
             </div>
 
             <div id="pesanUnit" class="feature flex rounded-lg p-3 justify-center items-center">
-                <form>
-                    <p class="text-content">Unit yang Telah Dipesan</p>
-                </form>
+                <div class="h-full w-full">
+                    <form class="h-full w-full" th:action="@{/agen/unitDipesan}" method="GET">
+                        <button class="h-full w-full"><p class="text-content">Unit yang Telah Dipesan</p></button>
+                    </form>
+                </div>
                 <div class="hidden-content-pesanUnit text-center">
                     <p>Lihat unit-unit yang telah dipesan oleh pelanggan.</p>
                 </div>
             </div>
 
             <div id="cekincekout" class="feature flex rounded-lg p-3 justify-center items-center">
-                <form>
-                    <p class="text-content">Daftar Check-In & Check-Out</p>
-                </form>
+                <div class="h-full w-full">
+                    <form class="h-full w-full" th:action="@{/agen/daftarCheckinCheckout}" method="GET">
+                        <button class="h-full w-full"><p class="text-content">Daftar Check-In & Check-Out</p></button>
+                    </form>
+                </div>
                 <div class="hidden-content-cekincekout text-center">
                     <p>Lihat daftar pelanggan yang telah melakukan Check-In maupun Check-Out.</p>
                 </div>
             </div>
 
             <div id="utilitas" class="feature flex rounded-lg p-3 justify-center items-center">
-                <form>
-                    <p class="text-content">Laporan Utilitas</p>
-                </form>
+                <div class="h-full w-full">
+                    <form class="h-full w-full" th:action="@{/agen/homePage}" method="GET">
+                        <button class="h-full w-full"><p class="text-content">Laporan Utilitas</p></button>
+                    </form>
+                </div>
                 <div class="hidden-content-utilitas text-center">
                     <p>Lihat laporan utilitas penyewaan apartemen.</p>
                 </div>
