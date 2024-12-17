@@ -16,30 +16,25 @@
     <div class="container">
         <h2>Pilih Unit Impian Anda</h2>
         <div class="searchbar_container">
-            <label for="tipe" class="tipe">Tipe Unit</label>
-            <select name="Tipe apartemen" id="tipe">
-                <option value="Studio">Studio</option>
-                <option value="2BR">2BR</option>
-            </select>
-            <label for="check_in_date" class="checkin">Check-In</label>
-            <input type="date" id="check_in_date">
-            <label for="check_in_date" class="checkout">Check-Out</label>
-            <input type="date" id="check_out_date">
+            <form action="mencariapartemen" method="post">
+                <label for="tipe" class="tipe">Tipe Unit</label>
+                <select name="Tipe apartemen" id="tipe">
+                    <option value="Studio">Studio</option>
+                    <option value="2BR">2BR</option>
+                </select>
+                <label for="check_in_date" class="checkin">Check-In</label>
+                <input type="date" id="check_in_date">
+                <label for="check_in_date" class="checkout">Check-Out</label>
+                <input type="date" id="check_out_date">
 
-            <label for="highestprice" class="hargarendah">Harga Terendah</label>
-            <input type="text" id="lowestprice">
-            <label for="highestprice" class="hargatinggi">Harga Tertinggi</label>
-            <input type="text" id="highestprice">
+                <label for="highestprice" class="hargarendah">Harga Terendah</label>
+                <input type="text" id="lowestprice">
+                <label for="highestprice" class="hargatinggi">Harga Tertinggi</label>
+                <input type="text" id="highestprice">
 
-            <label for="rating" class="rating">Rating Unit</label>
-            <select name="rating" id="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <button>Cari</button>
+                <button type="submit">Cari</button>
+            </form>
+            
         </div>
 
 

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.manpro.Unit.Unit;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping ("/agen")
 public class AgenController {
@@ -23,23 +25,32 @@ public class AgenController {
     private AgenRepository repo;
     private int addedUnitCounter = 0;
 
+    @Autowired
+    AgenService agenService;
+
     @GetMapping("/")
     public String agen(){
         return "agen/HomePageAgen";
     }
 
     @GetMapping("/unitDipesan")
-    public String unitDipesan(){
+    public String unitDipesan(Model model, HttpSession session){
+        String nikagen = (String) session.getAttribute("nikagen");
+        model.addAttribute("namaagen", agenService.login(nikagen).getNamaAgen());
         return "agen/DaftarUnitDipesan";
     }
 
     @GetMapping("/daftarCheckinCheckout")
-    public String daftarCheckinCheckout(){
+    public String daftarCheckinCheckout(Model model, HttpSession session){
+        String nikagen = (String) session.getAttribute("nikagen");
+        model.addAttribute("namaagen", agenService.login(nikagen).getNamaAgen());
         return "agen/DaftarCheckInOut";
     }
 
     @GetMapping("/cariKelolaUnit")
-    public String agenSearchUnit() {
+    public String agenSearchUnit(Model model, HttpSession session) {
+        String nikagen = (String) session.getAttribute("nikagen");
+        model.addAttribute("namaagen", agenService.login(nikagen).getNamaAgen());
         return "agen/cariUntukKelolaUnit";
     }
 

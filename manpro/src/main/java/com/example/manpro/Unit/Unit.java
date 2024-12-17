@@ -26,16 +26,16 @@ public class Unit {
         this.nikAgen = nikAgen;
         this.noLantai = noLantai;
         this.namaTower = namaTower;
-        transformPrice();
+        // transformPrice();
     }
 
-    private String priceString;
+    // private String priceString;
 
-    public void transformPrice(){
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
-        currencyFormat.setMaximumFractionDigits(0); // Remove decimal places
-        this.priceString = currencyFormat.format(tarif);
-    }
+    // public void transformPrice(){
+    //     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    //     currencyFormat.setMaximumFractionDigits(0); // Remove decimal places
+    //     this.priceString = currencyFormat.format(tarif);
+    // }
 
     
 }
