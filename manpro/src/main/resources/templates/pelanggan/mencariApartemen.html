@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CiRes+</title>
-    <link rel="stylesheet" href="../../static/css/style-mencari-apartemen.css">
+    <link rel="stylesheet" th:href="@{/css/style-mencari-apartemen.css}">
 </head>
 <body>
     <header>
@@ -18,8 +18,8 @@
         <div class="searchbar_container">
             <label for="tipe" class="tipe">Tipe Unit</label>
             <select name="Tipe apartemen" id="tipe">
-                <option value="studio">Studio</option>
-                <option value="2br">2 Bedroom</option>
+                <option value="Studio">Studio</option>
+                <option value="2BR">2BR</option>
             </select>
             <label for="check_in_date" class="checkin">Check-In</label>
             <input type="date" id="check_in_date">

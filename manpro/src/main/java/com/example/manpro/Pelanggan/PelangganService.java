@@ -37,7 +37,9 @@ public class PelangganService {
 
         try {
             if(optional.isPresent()) {
-                return pelanggan;
+                if(passwordEncoder.matches(password, optional.get().getPass())) {
+                    return pelanggan;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

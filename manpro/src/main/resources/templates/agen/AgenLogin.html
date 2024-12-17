@@ -2,8 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/AgenLogin.css">
-    <title>Login - Wombat.fm</title>
+    <link rel="stylesheet" th:href="@{/css/AgenLogin.css}">
+    <title>Agen Login</title>
 </head>
 <body>
     <div class="login-container">
@@ -11,10 +11,10 @@
             <img src="/assets/LogoCiresBaru.png" alt="Wombat.fm Logo">
         </div>
         <h2>Log in to Cires+</h2>
-        <form action="#">
+        <form action="agenLogin" method="post">
             <div class="form-group">
                 <label for="nikAgen">NIK Agen</label>
-                <input type="text" id="nikAgen" placeholder="NIK Agen">
+                <input type="text" name="nikagen" id="nikAgen" placeholder="NIK Agen">
             </div>
             <button type="submit" class="btn-login">Log in</button>
         </form>

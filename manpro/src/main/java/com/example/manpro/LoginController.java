@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.manpro.Agen.AgenService;
-
-import jakarta.servlet.http.HttpSession;
+import com.example.manpro.Pelanggan.PelangganService;
 
 @Controller
 public class LoginController {
@@ -16,27 +15,43 @@ public class LoginController {
     @Autowired
     private AgenService agenService;
 
+    @Autowired
+    private PelangganService pelangganService;
+
     @GetMapping("/agen/login")
-    public String indexAgen(HttpSession session) {
-        String nikAgen = (String) session.getAttribute("nikAgen");
-        if(nikAgen==null) {
-            return "AgenLogin";
-        }
-        return "HomePageAgen";
+    public String indexAgen() {
+        return "agen/AgenLogin";
     }
 
-    @PostMapping("agen/login")
-    public String loginAgen(@RequestParam String nikAgen, HttpSession session) {
+    @PostMapping("agenLogin")
+    public String loginAgen(@RequestParam String nikAgen) {
         try {
             if(agenService.login(nikAgen)!=null) {
-                session.setAttribute("nikAgen", nikAgen);
-                return "HomePageLogin";
+                return "agen/HomePageLogin";
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "AgenLogin";
+            return "agen/AgenLogin";
         }
 
-        return "AgenLogin";
+        return "agen/AgenLogin";
+    }
+
+    @GetMapping("/agen/agen/login")
+    public String indexLogin() {
+        return "templates/agen/HomePageLogin";
+    }
+
+    @GetMapping("/pelanggan/login_page.html")
+    public String indexPelanggan() {
+        return "pelanggan/login_page";
+    }
+
+    @PostMapping("login")
+    public String login(@RequestParam String email, @RequestParam String pass) {
+        if(pelangganService.login(email, pass)!=null) {
+            return "pelanggan/index";
+        }
+        return "pelanggan/login_page";
     }
 }

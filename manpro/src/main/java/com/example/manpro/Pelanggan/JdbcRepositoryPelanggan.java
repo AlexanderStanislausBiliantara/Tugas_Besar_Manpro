@@ -18,22 +18,22 @@ public class JdbcRepositoryPelanggan implements PelangganRepository {
     @Override
     public void save(Pelanggan pelanggan) throws Exception {
         String sql = "INSERT INTO Pelanggan (email, pass, nohp, namapel) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, pelanggan.getEmail(), pelanggan.getPass(), pelanggan.getNoHp(), pelanggan.getNamaPel());        
+        jdbcTemplate.update(sql, pelanggan.getEmail(), pelanggan.getPass(), pelanggan.getNohp(), pelanggan.getNamapel());        
     }
 
     @Override
-    public Optional<Pelanggan> findByEmailPelanggan(String emailPelanggan) {
+    public Optional<Pelanggan> findByEmailPelanggan(String email) {
         String sql = "SELECT * FROM Pelanggan WHERE = ?";
-        List<Pelanggan> results = jdbcTemplate.query(sql, this::mapRowToPelanggan, emailPelanggan);
+        List<Pelanggan> results = jdbcTemplate.query(sql, this::mapRowToPelanggan, email);
         return results.size() == 0 ? Optional.empty() : Optional.of(results.get(0));
     }
 
     private Pelanggan mapRowToPelanggan(ResultSet resultSet, int rowNum) throws SQLException {
         return new Pelanggan(
             resultSet.getString("email"), 
-            resultSet.getString("pass"), 
-            resultSet.getString("noHp"), 
-            resultSet.getString("namaPel")
+            resultSet.getString("namapel"), 
+            resultSet.getString("nohp"), 
+            resultSet.getString("pass")
             );
     }
     
