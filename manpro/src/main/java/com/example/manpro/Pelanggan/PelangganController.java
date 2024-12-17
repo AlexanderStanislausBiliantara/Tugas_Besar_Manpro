@@ -48,13 +48,14 @@ public class PelangganController {
 
         model.addAttribute("unit", unit.get(0));
 
+
         return "pelanggan/sewaApartemen";
     }
 
-    @PostMapping("/sewa")
+    @GetMapping("/sewa")
     public String sewa(){
         repoPelanggan.sewaApartemen(kodeUnit);
-        return "/";
+        return "pelanggan/mencariApartemen";
     }
 
 }

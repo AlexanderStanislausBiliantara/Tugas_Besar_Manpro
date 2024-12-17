@@ -37,13 +37,13 @@ public class JdbcRepositoryPelanggan implements PelangganRepository{
     }
 
     @Override
-    public void sewaApartemen(String kodeUnit){
-        List<Unit> unit = this.findUnitByKode(kodeUnit);
+    public int sewaApartemen(String kodeUnit){
+        List<Unit> unit = findUnitByKode(kodeUnit);
         Unit unitFinal = unit.get(0);
 
         String sql = "INSERT INTO sewa (waktusewa, waktuselesai, totalbiaya, email, kodeUnit)"+
-        "VALUES('20241217', '20241225', ?, 'johndoe@gmail.com', ?)";
-        jdbcTemplate.queryForList(sql, unitFinal.getTarif(), kodeUnit);
+        "VALUES('20241217', '20241225', ?, 'andi_pratama@gmail.com', ?)";
+        return jdbcTemplate.query(sql, unitFinal.getTarif(), kodeUnit);
     }
 
 
