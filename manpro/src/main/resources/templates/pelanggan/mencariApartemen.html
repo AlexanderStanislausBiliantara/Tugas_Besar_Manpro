@@ -7,10 +7,10 @@
 </head>
 <body>
     <header>
-        <img class="cires_icon" src="../../static/assets/LogoCiresBaru.png" />
+        <a th:href="@{/pelanggan/}"><img class="cires_icon" th:src="@{/assets/LogoCiresBaru.png}"/></a>
         <div class="header_buttons">
-            <a class="login" href="login_page.html"><p>Masuk</p></a>
-            <a class="login" href="daftar.html"><p>Daftar</p></a>
+            <a class="login" th:href="@{/login}"><p>Masuk</p></a>
+            <a class="login" th:href="@{daftar}"><p>Daftar</p></a>
         </div>
     </header>
     <div class="container">
