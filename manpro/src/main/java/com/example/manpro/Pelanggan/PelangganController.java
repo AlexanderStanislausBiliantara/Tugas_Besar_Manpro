@@ -1,5 +1,5 @@
 package com.example.manpro.Pelanggan;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,14 +9,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+import com.example.manpro.Unit.Unit;
+
+
 import jakarta.validation.Valid;
+
 
 @Controller
 @RequestMapping ("/pelanggan")
 public class PelangganController {
 
     @Autowired
+
+    private PelangganRepository repoPelanggan;
+
     private PelangganService pelangganService;
+
     
     @GetMapping("/")
     public String pelanggan(){
@@ -43,4 +52,34 @@ public class PelangganController {
     public String indexCariUnit() {
         return "pelanggan/mencariApartemen";
     }
+
+    @GetMapping("/daftar")
+    public String daftar(){
+        return "pelanggan/daftar";
+    }
+
+    @GetMapping("/cariApartemen")
+    public String cariApartemen(){
+        return "pelanggan/mencariApartemen";
+    }
+
+    private String kodeUnit;
+
+    @GetMapping("/sewaApartemen")
+    public String sewaApartemen(@RequestParam String kodeUnit, Model model){
+        List<Unit> unit = repoPelanggan.findUnitByKode(kodeUnit);
+        this.kodeUnit = kodeUnit;
+
+        model.addAttribute("unit", unit.get(0));
+
+
+        return "pelanggan/sewaApartemen";
+    }
+
+    @GetMapping("/sewa")
+    public String sewa(){
+        repoPelanggan.sewaApartemen(kodeUnit);
+        return "pelanggan/mencariApartemen";
+    }
+
 }

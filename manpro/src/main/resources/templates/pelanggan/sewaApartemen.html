@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Unit Apartemen</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .thumbnails {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        }
+
+        .thumb {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin: 0 5px;
+        cursor: pointer;
+        border-radius: 4px;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
+        .status-tersedia {
+            color: green;
+            font-weight: bold;
+        }
+
+        .tarif {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+
+        .facilities ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+
+        .facilities li {
+        margin: 5px 10px;
+        display: flex;
+        align-items: center;
+        }
+
+        .facilities li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .btn-pesan, .btn-kontak {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .main-image > img{
+            width: 70%;
+            height: 70%;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Detail Unit Apartemen</h1>
+        <!-- Tambahkan navigasi kembali di sini jika diperlukan -->
+    </header>
+    
+    <main class="h-full">
+        <section class="gallery">
+            <!-- Gambar slideshow/carousel-->
+            <div class="main-image flex items-center justify-center overflow-hidden">
+                    <img id="mainImage" th:src="@{/assets/Studio1.jpg}" alt="foto apartemen">
+            </div>
+            <div class="thumbnails">
+              <img th:src="@{/assets/Studio1.jpg}" alt="foto apartemen" class="thumb" onclick="changeMainImage(this)">
+              <img th:src="@{/assets/Studio2.png}" alt="foto apartemen" class="thumb" onclick="changeMainImage(this)">
+              <img th:src="@{/assets/Studio3.png}" alt="foto apartemen" class="thumb" onclick="changeMainImage(this)">
+            </div>
+        </section>
+
+        <section class="info">
+            <h2 class="font-bold text-2xl">Kode Unit: <span th:text="${unit.kodeUnit}"></span></h2>
+            <p><strong>Tipe Unit: </strong><span th:text="${unit.tipe}"></span></p>
+            <p><strong>Nomor Unit: </strong><span th:text="${unit.noUnit}"></span></p>
+            <p><strong>Tower: </strong><span th:text="${unit.namaTower}"></span></p>
+            <p class="tarif"><strong>Tarif: </strong><span th:text="${unit.tarif}"></span></p>
+        </section>
+
+        <section class="facilities flex flex-row">
+          <h3 class="flex">Fasilitas Unit</h3>
+          <ul class="justify-start items-start">
+            <li><img th:src="@{/assets/ac.png}" alt="ac"> AC</li>
+            <li><img th:src="@{/assets/wifi.png}" alt="wifi"> WiFi</li>
+            <li><img th:src="@{/assets/kitchen.png}" alt="kitchen"> Dapur Lengkap</li>
+          </ul>
+        </section>
+        
+        <section class="actions">
+            <form th:action="@{/pelanggan/sewa}">
+                <button type="submit" class="btn-pesan bg-blue-500 hover:bg-blue-700">Pesan Sekarang</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script>
+        function changeMainImage(element) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = element.src;
+        }
+    </script>
+</body>
+</html>
