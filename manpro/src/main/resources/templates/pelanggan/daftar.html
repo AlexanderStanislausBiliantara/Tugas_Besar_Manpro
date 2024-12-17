@@ -14,11 +14,11 @@
         <div>
             <span class="title"><h1>Selamat Datang di CiRes+</h1></span>
             <div class="form">
-                <form action="">
-                    <input type="text" placeholder="Email" id="email">
-                    <input type="text" placeholder="Nama Lengkap" id="nama_lengkap">
-                    <input type="text" placeholder="Nomor Handphone" id="nomor_handphone">
-                    <input type="password" placeholder="Password" id="password">
+                <form method="post" action="daftar" th:object="${pelanggan}">
+                    <input type="text" name="email" placeholder="Email" id="email">
+                    <input type="text" name="namapel" placeholder="Nama Lengkap" id="nama_lengkap">
+                    <input type="text" name="nohp" placeholder="Nomor Handphone" id="nomor_handphone">
+                    <input type="password" name="pass" placeholder="Password" id="password">
                     <span class="punya-akun">
                         <a href="login_page.html">Sudah Punya Akun</a>
                     </span>
