@@ -2,7 +2,6 @@ package com.example.manpro.Agen;
 
 import java.time.LocalDate;
 import java.util.List;
-import com.example.manpro.Agen.JdbcRepositorySewa;
 
 import org.springframework.stereotype.Service;
 
@@ -16,5 +15,9 @@ public class JdbcRepositorySewaService {
 
     public List<Sewa> getCheckInByDate(LocalDate date) {
         return repository.findCheckInByDate(date);
+    }
+
+    public List<Sewa> getCheckOutByDate(LocalDate date) {
+        return repository.findCheckOutByDate(date);
     }
 }

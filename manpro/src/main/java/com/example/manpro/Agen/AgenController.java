@@ -1,5 +1,7 @@
 package com.example.manpro.Agen;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class AgenController {
     private AgenRepository repo;
     private int addedUnitCounter = 0;
 
+    @Autowired
+    private JdbcRepositorySewaService repository;
+
     @GetMapping("/")
     public String agen(){
         return "agen/HomePageAgen";
@@ -33,6 +38,22 @@ public class AgenController {
     @GetMapping("/cariKelolaUnit")
     public String agenSearchUnit() {
         return "agen/cariUntukKelolaUnit";
+    }
+
+    @GetMapping("/checkin")
+    public String check(){
+        return "agen/DaftarCheckInOut";
+    }
+
+    @PostMapping("/checkin")
+    public String cekincekout(@RequestParam String waktusewa, Model model){
+        LocalDate date = LocalDate.parse(waktusewa);
+        List<Sewa> checkInList = repository.getCheckInByDate(date);
+        List<Sewa> checkOutList = repository.getCheckOutByDate(date);
+
+        model.addAttribute("checkin", checkInList);
+        model.addAttribute("checkout", checkOutList);
+        return "agen/DaftarCheckInOut";
     }
 
     @GetMapping("/addUnit")
