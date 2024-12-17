@@ -43,9 +43,9 @@ public class JdbcRepositoryAgen implements AgenRepository {
     }
 
     @Override
-    public Optional<Agen> findByNikAgen(String nikAgen) {
-        String sql = "SELECT * FROM Agen where = ?";
-        List<Agen> results = jdbcTemplate.query(sql, this::mapRowToAgen, nikAgen);
+    public Optional<Agen> findByNikAgen(String nikagen) {
+        String sql = "SELECT * FROM Agen where nikagen = ?";
+        List<Agen> results = jdbcTemplate.query(sql, this::mapRowToAgen, nikagen);
         return results.size() == 0 ? Optional.empty() : Optional.of(results.get(0));
     }
 

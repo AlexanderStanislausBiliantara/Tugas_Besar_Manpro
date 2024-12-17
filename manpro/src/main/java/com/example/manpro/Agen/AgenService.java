@@ -14,8 +14,8 @@ public class AgenService {
     @Autowired
     private AgenRepository agenRepository;
 
-    public Agen login(String nikAgen) {
-        Optional<Agen> optional = agenRepository.findByNikAgen(nikAgen);
+    public Agen login(String nikagen) {
+        Optional<Agen> optional = agenRepository.findByNikAgen(nikagen);
         Agen agen = optional.get();
 
         try {
