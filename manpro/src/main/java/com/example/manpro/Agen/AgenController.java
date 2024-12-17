@@ -1,8 +1,5 @@
 package com.example.manpro.Agen;
 
-import java.text.NumberFormat;
-import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +28,6 @@ public class AgenController {
     @GetMapping("/unitDipesan")
     public String unitDipesan(){
         return "agen/DaftarUnitDipesan";
-    }
-
-    @GetMapping("/daftarCheckinCheckout")
-    public String daftarCheckinCheckout(){
-        return "agen/DaftarCheckInOut";
     }
 
     @GetMapping("/cariKelolaUnit")
