@@ -18,20 +18,23 @@ public class JdbcRepositorySewa {
 
     // Method untuk mengambil daftar sewa dengan tanggal check-in
     public List<Sewa> findCheckInByDate(LocalDate tanggal) {
-        String sql = "SELECT kodeunit, waktusewa, waktuselesai" +
+        String sql = "SELECT kodeunit, waktusewa, waktuselesai " +
                      "FROM sewa WHERE waktusewa = ?";
-        return jdbcTemplate.query(sql, new SewaRowMapper(), tanggal);
+        return jdbcTemplate.query(sql, this::mapRow, tanggal);
     }
 
-    // Mapper untuk memetakan hasil query ke objek Sewa
-    private static class SewaRowMapper implements org.springframework.jdbc.core.RowMapper<Sewa> {
-        @Override
-        public Sewa mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Sewa sewa = new Sewa();
-            sewa.setKodeUnit(rs.getString("kodeunit"));
-            sewa.setWaktusewa(rs.getDate("waktusewa").toString());
-            sewa.setWaktuselesai(rs.getDate("waktuselesai").toString());
-            return sewa;
-        }
+    public List<Sewa> findCheckOutByDate(LocalDate tanggal) {
+        String sql = "SELECT kodeunit, waktusewa, waktuselesai " +
+                     "FROM sewa WHERE waktuselesai = ?";
+        return jdbcTemplate.query(sql, this::mapRow, tanggal);
     }
+
+    private Sewa mapRow(ResultSet rs, int rowNum) throws SQLException {
+        return new Sewa(
+            rs.getString("kodeunit"),
+            rs.getDate("waktusewa"),
+            rs.getDate("waktuselesai")
+        );
+    }
+
 }
